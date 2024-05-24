@@ -20,6 +20,7 @@ Aggregation Functions: SUM().
 Type Casting: CAST().
 Sorting and Limiting Results: ORDER BY and TOP.
 
+```sql
 
 WITH total_spent_cte AS (
     SELECT SUM(CAST(amount AS BIGINT)) AS total_spent 
