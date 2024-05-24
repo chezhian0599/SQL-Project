@@ -31,7 +31,7 @@ SELECT TOP 5 city, SUM(amount) AS expense, total_spent,
 FROM credit_card_transcations, total_spent_cte
 GROUP BY city, total_spent
 ORDER BY expense DESC;
-```sql
+sql```
 
 
 **2. Highest Spend Month by Card Type**
