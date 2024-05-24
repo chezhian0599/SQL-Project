@@ -20,7 +20,7 @@ Aggregation Functions: SUM().
 Type Casting: CAST().
 Sorting and Limiting Results: ORDER BY and TOP.
 
-```sql
+
 
 WITH total_spent_cte AS (
     SELECT SUM(CAST(amount AS BIGINT)) AS total_spent 
@@ -31,7 +31,7 @@ SELECT TOP 5 city, SUM(amount) AS expense, total_spent,
 FROM credit_card_transcations, total_spent_cte
 GROUP BY city, total_spent
 ORDER BY expense DESC;
-sql```
+
 
 
 **2. Highest Spend Month by Card Type**
@@ -43,7 +43,7 @@ CTE: For pre-aggregating monthly expenses.
 Date Functions: DATEPART(), DATENAME().
 Window Functions: RANK().
 
-```sql
+
 WITH cte AS (
     SELECT card_type, DATEPART(year, transaction_date) AS yo, DATENAME(month, transaction_date) AS mo,
         SUM(amount) AS monthly_expense
@@ -55,7 +55,6 @@ SELECT * FROM (
     FROM cte
 ) A
 WHERE rn = 1;
-```sql
 
 **3. Cumulative Spend Milestones by Card Type**
 Purpose: Retrieve transaction details when the cumulative total spends reach 1,000,000 for each card type.
@@ -65,7 +64,7 @@ SQL Functions Used:
 Window Functions: SUM() OVER(), RANK() OVER().
 Conditional Filtering: Using cumulative sums.
 
-```sql
+
 SELECT * FROM (
     SELECT *, RANK() OVER(PARTITION BY card_type ORDER BY cum_sum ASC) AS rn
     FROM (
@@ -86,7 +85,7 @@ Aggregation Functions: SUM().
 Conditional Aggregation: CASE WHEN.
 Sorting: ORDER BY.
 
-```sql
+
 SELECT city, SUM(amount) AS total_spend,
     SUM(CASE WHEN card_type = 'Gold' THEN amount ELSE 0 END) AS gold_spend,
     SUM(CASE WHEN card_type = 'Gold' THEN amount ELSE 0 END) * 1.0 / SUM(amount) * 100 AS gold_contribution
@@ -94,7 +93,7 @@ FROM credit_card_transcations
 GROUP BY city
 HAVING SUM(CASE WHEN card_type = 'Gold' THEN amount ELSE 0 END) > 0
 ORDER BY gold_contribution;
-```sql
+
 
 **Skills Demonstrated**
 
