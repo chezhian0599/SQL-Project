@@ -20,7 +20,7 @@ Aggregation Functions: SUM().
 Type Casting: CAST().
 Sorting and Limiting Results: ORDER BY and TOP.
 
-```sql
+
 WITH total_spent_cte AS (
     SELECT SUM(CAST(amount AS BIGINT)) AS total_spent 
     FROM credit_card_transcations
@@ -40,7 +40,7 @@ CTE: For pre-aggregating monthly expenses.
 Date Functions: DATEPART(), DATENAME().
 Window Functions: RANK().
 
-```sql
+
 WITH cte AS (
     SELECT card_type, DATEPART(year, transaction_date) AS yo, DATENAME(month, transaction_date) AS mo,
         SUM(amount) AS monthly_expense
@@ -62,7 +62,7 @@ SQL Functions Used:
 Window Functions: SUM() OVER(), RANK() OVER().
 Conditional Filtering: Using cumulative sums.
 
-```sql
+
 SELECT * FROM (
     SELECT *, RANK() OVER(PARTITION BY card_type ORDER BY cum_sum ASC) AS rn
     FROM (
@@ -83,7 +83,7 @@ Aggregation Functions: SUM().
 Conditional Aggregation: CASE WHEN.
 Sorting: ORDER BY.
 
-```sql
+
 SELECT city, SUM(amount) AS total_spend,
     SUM(CASE WHEN card_type = 'Gold' THEN amount ELSE 0 END) AS gold_spend,
     SUM(CASE WHEN card_type = 'Gold' THEN amount ELSE 0 END) * 1.0 / SUM(amount) * 100 AS gold_contribution
