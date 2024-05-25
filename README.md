@@ -103,8 +103,8 @@ Proficient use of SQL for data analysis.
 Advanced SQL techniques including window functions and common table expressions (CTEs).
 Effective use of aggregation, sorting, and filtering to derive insights from data.
 
-**Credits**
+**Course Credits**
 SQL Zero to Hero by **Mr.Ankit Bansal**
 
 **Website Link**
-https://www.namastesql.com/
+https://www.namastesql.com
